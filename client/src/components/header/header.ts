@@ -1,4 +1,4 @@
-import { Component } from "../components/utils/component";
+import { Component } from "../utils/component";
 
 export class Header extends Component {
 
