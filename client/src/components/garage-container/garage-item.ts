@@ -1,8 +1,8 @@
-import { Component } from "../../utils/component";
-import { UIButton } from "../createCar/button/button";
-import { ICar, ICarEngine} from "../../inteface/insdex";
-import { carImage } from "../shared/car-img/car-img";
-import { startEngineCar, stopEngineCar, switchToDriveMode } from "../../api/api";
+import { Component } from '../../utils/component';
+import { UIButton } from '../createCar/button/button';
+import { ICar, ICarEngine } from '../../inteface/insdex';
+import { carImage } from '../shared/car-img/car-img';
+import { startEngineCar, stopEngineCar, switchToDriveMode } from '../../api/api';
 
 const carImageWidth = 100;
 
@@ -40,25 +40,14 @@ export class GarageItem extends Component {
 
     const carField = new Component(this.element, 'div', ['garage-item-field']);
 
-    const controlBlock = new Component(carField.element, 'div', [
-      'garage-item-control-block',
-    ]);
+    const controlBlock = new Component(carField.element, 'div', ['garage-item-control-block']);
 
-    this.startEngineButton = new UIButton(
-      controlBlock.element,
-      ['btn-small'],
-      'A',
-    );
+    this.startEngineButton = new UIButton(controlBlock.element, ['btn-small'], 'A');
     this.startEngineButton.onClickButton = () => {
       if (car.id) this.startCarEngine(car.id);
     };
 
-    this.stopEngineButton = new UIButton(
-      controlBlock.element,
-      ['btn-small'],
-      'B',
-      true,
-    );
+    this.stopEngineButton = new UIButton(controlBlock.element, ['btn-small'], 'B', true);
     this.stopEngineButton.onClickButton = () => {
       if (car.id) this.stopCarEngine(car.id);
     };

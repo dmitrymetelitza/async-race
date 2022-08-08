@@ -1,16 +1,25 @@
-import { GarageContainer } from "../../components/garage-container/garage-container";
-import { Component } from "../../utils/component";
-import { GarageOptions } from "../../components/garage-options/options";
-import { createCar,  createWinner, deleteCar, deleteWinner, getAllCars, getCar, getWinner, updateCar, updateWinner} from "../../API/api";
-import { ICar, ICarData, ICreateCar, IUpdateCar, IWinner} from "../../inteface/insdex";
-import { randomRGBColor } from "../../components/shared/generate-rgb";
-import { cars } from "../../config/cars";
-import { GarageItem } from "../../components/garage-container/garage-item";
-import { WinnerPopup } from "../../components/popup/winner-popuo";
+import { GarageContainer } from '../../components/garage-container/garage-container';
+import { Component } from '../../utils/component';
+import { GarageOptions } from '../../components/garage-options/options';
+import {
+  createCar,
+  createWinner,
+  deleteCar,
+  deleteWinner,
+  getAllCars,
+  getCar,
+  getWinner,
+  updateCar,
+  updateWinner,
+} from '../../api/api';
+import { ICar, ICarData, ICreateCar, IUpdateCar, IWinner } from '../../inteface/insdex';
+import { randomRGBColor } from '../../components/shared/generate-rgb';
+import { cars } from '../../config/cars';
+import { GarageItem } from '../../components/garage-container/garage-item';
+import { WinnerPopup } from '../../components/popup/winner-popuo';
 
-export class Garage extends Component{
-
-    private winnerPopup: WinnerPopup | undefined;
+export class Garage extends Component {
+  private winnerPopup: WinnerPopup | undefined;
   private garageOptions: GarageOptions;
   private garageContainer: GarageContainer;
   page = 1;
@@ -46,11 +55,7 @@ export class Garage extends Component{
       const carLength: string = data.count;
       this.garageContainer.addItems(carsArr, carLength);
 
-      this.garageContainer.pagination.updateNextButton(
-        this.page,
-        +carLength,
-        7,
-      );
+      this.garageContainer.pagination.updateNextButton(this.page, +carLength, 7);
     }
   }
 
@@ -103,13 +108,11 @@ export class Garage extends Component{
     this.garageOptions.optionsButtons.buttonRace.setDisabled(true);
     this.garageOptions.optionsButtons.buttonGenerateCars.setDisabled(true);
 
-    const res: Promise<GarageItem>[] = this.garageContainer.cars.map(
-      async (car) => {
-        await car.startCarEngine(car.car.id);
-        car.disableAllButtons();
-        return car;
-      },
-    );
+    const res: Promise<GarageItem>[] = this.garageContainer.cars.map(async (car) => {
+      await car.startCarEngine(car.car.id);
+      car.disableAllButtons();
+      return car;
+    });
 
     const winnerCar = await Promise.race(res);
 

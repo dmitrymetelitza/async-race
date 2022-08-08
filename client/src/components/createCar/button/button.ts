@@ -1,28 +1,25 @@
 import { Component } from '../../../utils/component';
-import './button.scss'
+import './button.scss';
 
-export class UIButton extends Component{
-    onClickButton: () => void = () => {};
+export class UIButton extends Component {
+  onClickButton: () => void = () => {};
 
-    constructor(
-        parentNode: HTMLElement,
-        styles: string[] = [],
-        content: string,
-        disabled = false,
-    ){
-        super(parentNode, 'button', ['btn'], content);
+  constructor(parentNode: HTMLElement, styles: string[] = [], content: string, disabled = false) {
+    super(parentNode, 'button', ['btn'], content);
 
-        this.element.classList.add(...styles);
-        this.element.addEventListener('click', () => this.onClickButton());
+    this.element.classList.add(...styles);
+    this.element.addEventListener('click', () => this.onClickButton());
 
-        if(disabled){
-            this.setDisabled(true);
-        }
+    if (disabled) {
+      this.setDisabled(true);
     }
-    setDisabled(type = false): void {
-        this.element.toggleAttribute('disabled', type);
-    }
-    removeDisabled(): void {
-        this.element.removeAttribute('disabled');
-    }
+  }
+
+  setDisabled(type = false): void {
+    this.element.toggleAttribute('disabled', type);
+  }
+
+  removeDisabled(): void {
+    this.element.removeAttribute('disabled');
+  }
 }

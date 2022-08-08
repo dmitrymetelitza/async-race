@@ -1,7 +1,7 @@
-import './car-image.scss'
+import './car-image.scss';
 
-export function carImage(color: string): string{
-    return`
+export function carImage(color: string): string {
+  return `
     <svg class="car-image-svg" version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 569" width="1280" height="569">
     <title>1918554-svg</title>
     <style>
@@ -39,4 +39,4 @@ export function carImage(color: string): string{
       <path id="Layer" style="fill: ${color}" d="M1103.5 459.9C1102.8 461.1 1101.2 474.3 1100.6 484.2C1100.2 491.9 1100.2 492 1102.5 492C1107 492 1115.5 489.8 1121.8 486.9L1128.2 484L1126.3 481.7C1119.8 473.5 1106.5 459 1105.4 459C1104.7 459 1103.9 459.4 1103.5 459.9Z" />
     </g>
   </svg>`;
-};
+}
