@@ -177,3 +177,13 @@ export const stopEngineCar = async (carId: number): Promise<{ status: number; re
           throw new Error(err);
       }
   };
+
+  export const deleteWinner = async (carId: number): Promise<void> => {
+    try {
+      await fetch(`${baseUrl}/winners/${carId}`, {
+        method: 'DELETE',
+      });
+    } catch (err) {
+      throw new Error(err);
+    }
+  };
