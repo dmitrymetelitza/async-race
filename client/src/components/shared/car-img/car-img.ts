@@ -1,3 +1,5 @@
+import './car-image.scss'
+
 export function carImage(color: string): string{
     return`
     <svg class="car-image-svg" version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 569" width="1280" height="569">

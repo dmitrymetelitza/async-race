@@ -1,8 +1,8 @@
-import { Component } from "../utils/component";
+import { Component } from "../../utils/component";
 import { UIButton } from "../createCar/button/button";
-import { ICar, ICarEngine } from "../inteface/interface";
+import { ICar, ICarEngine} from "../../inteface/insdex";
 import { carImage } from "../shared/car-img/car-img";
-import { startEngineCar, stopEngineCar, switchToDriveMode } from "../API/api";
+import { startEngineCar, stopEngineCar, switchToDriveMode } from "../../api/api";
 
 const carImageWidth = 100;
 

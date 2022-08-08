@@ -1,13 +1,11 @@
-import { ICar, ICreateCar, ICarEngine, IUpdateCar, ICarData, IWinner } from "../inteface/interface";
+import { ICar, ICreateCar, ICarEngine, IUpdateCar, IWinner } from "../inteface/insdex";
 
 const urlServer: string = 'http://127.0.0.1:3000';
-const garage: string = '/garage';
-const engine: string = '/engine';
-const winners: string = '/winners'; 
 
-export const getCar = async (carID: number): Promise<ICar | null> =>{
+
+export const getCar = async (carId: number): Promise<ICar | null> =>{
     try{
-        const data = await fetch(`${urlServer}${garage}/${carID}`);
+        const data = await fetch(`${urlServer}/garage/${carId}`);
     const res: ICar = await data.json();
 
     if (data.status === 200) {
@@ -20,9 +18,9 @@ export const getCar = async (carID: number): Promise<ICar | null> =>{
   }
 };
 
-export const getAllCar = async (page = 1, limit = 7): Promise<{cars: Array<ICar>; count: string} | null> => {
+export const getAllCars = async (page = 1, limit = 7): Promise<{cars: Array<ICar>; count: string} | null> => {
     try{
-        const data = await fetch(`${urlServer}${garage}/_limit=${limit}&_page=${page}`);
+        const data = await fetch(`${urlServer}/garage?_limit=${limit}&_page=${page}`);
         const res: ICar[] = await data.json();
 
     if (data.status === 200) {
@@ -40,7 +38,7 @@ export const getAllCar = async (page = 1, limit = 7): Promise<{cars: Array<ICar>
 
 export const createCar = async (car: ICreateCar): Promise<void> =>{
     try{
-        await fetch(`${urlServer}${garage}`, {
+        await fetch(`${urlServer}/garage`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -52,9 +50,9 @@ export const createCar = async (car: ICreateCar): Promise<void> =>{
     }
 };
 
-export const deleteCar = async (carID: number): Promise<void> =>{
+export const deleteCar = async (carId: number): Promise<void> =>{
     try{
-        await fetch(`${urlServer}${garage}/${carID}`, {
+        await fetch(`${urlServer}/garage/${carId}`, {
             method: 'DELETE',
         });
     } catch(err){
@@ -64,7 +62,7 @@ export const deleteCar = async (carID: number): Promise<void> =>{
 
 export const updateCar = async (car: IUpdateCar): Promise<void> => {
     try{
-        await fetch(`${urlServer}${garage}/${car.id}`, {
+        await fetch(`${urlServer}/garage/${car.id}`, {
             method: 'PUT',
             headers:{
                 'Content-Type': 'application/json',
@@ -78,9 +76,9 @@ export const updateCar = async (car: IUpdateCar): Promise<void> => {
 
 export const startEngineCar = async (carId: number): Promise<{ status: number; result: ICarEngine }> => {
     try {
-      const data = await fetch(`${urlServer}${engine}?id=${carId}&status=started`);
+      const data = await fetch(`${urlServer}/engine?id=${carId}&status=started`);
       const res: ICarEngine = await data.json();
-  
+
       return {
         status: data.status,
         result: res,
@@ -92,9 +90,9 @@ export const startEngineCar = async (carId: number): Promise<{ status: number; r
 
 export const stopEngineCar = async (carId: number): Promise<{ status: number; result: ICarEngine }> => {
     try {
-      const data = await fetch(`${urlServer}${engine}?id=${carId}&status=stopped`);
+      const data = await fetch(`${urlServer}/engine?id=${carId}&status=stopped`);
       const res: ICarEngine = await data.json();
-  
+
       return {
         status: data.status,
         result: res,
@@ -106,8 +104,8 @@ export const stopEngineCar = async (carId: number): Promise<{ status: number; re
 
   export const switchToDriveMode = async (carId: number): Promise<number> => {
     try {
-      const data = await fetch(`${urlServer}${engine}?id=${carId}&status=drive`);
-  
+      const data = await fetch(`${urlServer}/engine?id=${carId}&status=drive`);
+
       return data.status;
     } catch (err) {
       throw new Error(err);
@@ -122,10 +120,10 @@ export const stopEngineCar = async (carId: number): Promise<{ status: number; re
   ): Promise<{ result: Array<IWinner>; totalCount: string }> => {
     try {
       const data = await fetch(
-        `${urlServer}${winners}?_page=${page}&_limit=${limit}&_sort=${sort}&_order=${order}`,
+        `${urlServer}/winners?_page=${page}&_limit=${limit}&_sort=${sort}&_order=${order}`,
       );
       const res: Array<IWinner> = await data.json();
-  
+
       return {
         result: res,
         totalCount: data.headers.get('X-Total-Count') || '0',
@@ -137,7 +135,7 @@ export const stopEngineCar = async (carId: number): Promise<{ status: number; re
 
   export const getWinner = async (winnerId: number): Promise<{status: number; result: IWinner}> =>{
       try{
-          const data = await fetch(`${urlServer}${winners}/${winnerId}`);
+          const data = await fetch(`${urlServer}/winners/${winnerId}`);
           const res: IWinner = await data.json();
           return{
               status: data.status,
@@ -150,23 +148,23 @@ export const stopEngineCar = async (carId: number): Promise<{ status: number; re
 
   export const createWinner = async (carData: IWinner): Promise<number> => {
     try {
-      const data = await fetch(`${urlServer}${winners}`, {
+      const data = await fetch(`${urlServer}/winners`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(carData),
       });
-  
+
       return data.status;
     } catch (err) {
       throw new Error(err);
     }
   };
-  
-  export const updateWinners = async (carData: IWinner): Promise<void> => {
+
+  export const updateWinner = async (carData: IWinner): Promise<void> => {
       try {
-          await fetch (`${urlServer}${winners}/${carData.id}`, {
+          await fetch (`${urlServer}/winners/${carData.id}`, {
               method: 'PUT',
               headers: {
                 'Content-Type': 'application/json',

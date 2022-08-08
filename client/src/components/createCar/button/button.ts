@@ -1,10 +1,11 @@
-import { Component } from "../../utils/component";
+import { Component } from '../../../utils/component';
+import './button.scss'
 
 export class UIButton extends Component{
     onClickButton: () => void = () => {};
 
     constructor(
-        parentNode: HTMLAnchorElement,
+        parentNode: HTMLElement,
         styles: string[] = [],
         content: string,
         disabled = false,
@@ -18,10 +19,10 @@ export class UIButton extends Component{
             this.setDisabled(true);
         }
     }
-    setDisabled(type = false):void{
+    setDisabled(type = false): void {
         this.element.toggleAttribute('disabled', type);
     }
-    removeDisabled():void{
+    removeDisabled(): void {
         this.element.removeAttribute('disabled');
     }
 }

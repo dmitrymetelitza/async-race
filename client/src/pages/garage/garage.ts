@@ -1,12 +1,12 @@
-import { GarageContainer } from "../../garage-container/garage-container";
+import { GarageContainer } from "../../components/garage-container/garage-container";
 import { Component } from "../../utils/component";
-import { GarageOptions } from "../../garage-options/options";
-import { createCar,  createWinner, deleteCar, deleteWinner, getAllCar, getCar, getWinner, updateCar, updateWinners} from "../../API/api";
-import { ICar, ICarData, ICreateCar, IUpdateCar, IWinner} from "../../inteface/interface";
-import { randomRGBColor } from "../../shared/generate-rgb";
-import { cars } from "../../cars/cars";
-import { GarageItem } from "../../garage-container/garage-item";
-import { WinnerPopup } from "../../popup/winner-popuo";
+import { GarageOptions } from "../../components/garage-options/options";
+import { createCar,  createWinner, deleteCar, deleteWinner, getAllCars, getCar, getWinner, updateCar, updateWinner} from "../../API/api";
+import { ICar, ICarData, ICreateCar, IUpdateCar, IWinner} from "../../inteface/insdex";
+import { randomRGBColor } from "../../components/shared/generate-rgb";
+import { cars } from "../../config/cars";
+import { GarageItem } from "../../components/garage-container/garage-item";
+import { WinnerPopup } from "../../components/popup/winner-popuo";
 
 export class Garage extends Component{
 

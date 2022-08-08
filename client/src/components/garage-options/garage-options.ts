@@ -1,4 +1,4 @@
-import { Component } from "../utils/component";
+import { Component } from "../../utils/component";
 import { UIButton } from "../createCar/button/button";
 
 export class OptionsButtons extends Component {
@@ -8,17 +8,17 @@ export class OptionsButtons extends Component {
     buttonRace: UIButton;
     buttonReset: UIButton;
     buttonGenerateCars: UIButton;
-  
+
     constructor(parentNode: HTMLElement) {
       super(parentNode, 'div', ['garage-buttons']);
-  
+
       this.buttonRace = new UIButton(
         this.element,
         ['garage-race-button'],
         'race',
       );
       this.buttonRace.onClickButton = () => this.startRaceAllCars();
-  
+
       this.buttonReset = new UIButton(
         this.element,
         ['garage-reset-button'],
@@ -26,7 +26,7 @@ export class OptionsButtons extends Component {
         true,
       );
       this.buttonReset.onClickButton = () => this.resetAllCars();
-  
+
       this.buttonGenerateCars = new UIButton(
         this.element,
         ['garage-generate-button'],
