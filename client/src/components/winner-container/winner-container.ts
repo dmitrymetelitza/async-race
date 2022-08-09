@@ -25,18 +25,18 @@ export class WinnersContainer extends Component {
     const itemsTitle = new Component(this.element, 'div', ['winner-item', 'winner-items-title']);
 
     itemsTitle.element.innerHTML = `
-        <div class="winner-item-id">№</div>
-        <div class="winner-item-image">Car Image</div>
-        <div class="winner-item-name">Name</div>
-        <div class="winner-item-wins">
-          <span>Total Wins</span>
-          <img class="winner-item-arrow" src="./assets/arrow.svg" />
-        </div>
-        <div class="winner-item-time">
-          <span>Time (sec)</span>
-          <img class="winner-item-arrow" src="./assets/arrow.svg" />
-        </div>
-      `;
+      <div class="winner-item-id">№</div>
+      <div class="winner-item-image">Car Image</div>
+      <div class="winner-item-name">Name</div>
+      <div class="winner-item-wins">
+        <span>Total Wins</span>
+        <img class="winner-item-arrow" src="./assets/arrow.svg" />
+      </div>
+      <div class="winner-item-time">
+        <span>Time (sec)</span>
+        <img class="winner-item-arrow" src="./assets/arrow.svg" />
+      </div>
+    `;
 
     const winnerTotal = itemsTitle.element.querySelector('.winner-item-wins');
     winnerTotal?.addEventListener('click', () => this.handleSortWinners(winnerTotal, 'wins'));

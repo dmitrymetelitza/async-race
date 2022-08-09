@@ -1,3 +1,8 @@
+export interface IRoute {
+  name: string;
+  component: () => void;
+}
+
 export interface ICar {
   id: number;
   name: string;
@@ -5,6 +10,21 @@ export interface ICar {
 }
 
 export interface ICreateCar {
+  name: string;
+  color: string;
+}
+
+export interface ICarEngine {
+  velocity: number;
+  distance: number;
+}
+
+export interface ICarDriveMode {
+  success: boolean;
+}
+
+export interface IUpdateCar {
+  id?: number;
   name: string;
   color: string;
 }
@@ -19,29 +39,9 @@ export interface ICarData {
   id: number;
   name: string;
   color: string;
-  time?: number;
-  wins: number;
   speed: number;
-}
-
-export interface ICarDriveMode {
-  success: boolean;
-}
-
-export interface IUpdateCar {
-  id?: number;
-  color: string;
-  name: string;
-}
-
-export interface IRoute {
-  name: string;
-  component: () => void;
-}
-
-export interface ICarEngine {
-  velocity: number;
-  distance: number;
+  wins: number;
+  time?: number;
 }
 
 export interface IWinnerCar extends ICar, IWinner {}

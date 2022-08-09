@@ -2,7 +2,7 @@ export class Component {
   element: HTMLElement;
 
   constructor(
-    perentNode: HTMLElement,
+    parentNode: HTMLElement,
     tagName: keyof HTMLElementTagNameMap = 'div',
     styles: string[] = [],
     content = '',
@@ -11,8 +11,8 @@ export class Component {
     this.element.classList.add(...styles);
     this.element.textContent = content;
 
-    if (perentNode) {
-      perentNode.append(this.element);
+    if (parentNode) {
+      parentNode.append(this.element);
     }
   }
 

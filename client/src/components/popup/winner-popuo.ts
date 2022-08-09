@@ -7,14 +7,14 @@ export class WinnerPopup extends Component {
   constructor(parentNode: HTMLElement, carData: ICarData) {
     super(parentNode, 'div', ['popup-winner']);
 
-    const title = new Component(this.element, 'h2', ['popup-winnet-title']);
+    const title = new Component(this.element, 'h2', ['popup-winner-title']);
     title.element.style.color = `${carData.color}`;
     title.element.innerHTML = `
-        Winner
-        <span>${carData.name}</span>
-        in
-        <span>${carData.speed}</span>
-        sec...
-        `;
+      Winner
+      <span>${carData.name}</span>
+      in
+      <span>${carData.speed}</span>
+      sec...
+    `;
   }
 }
